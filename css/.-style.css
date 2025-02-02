@@ -7,7 +7,7 @@ body {
 	font-family: 'Indie Flower', cursive !important;
   background: #FDE3A7; /*CAPE HONEY*/
   background-image: url('background1.jpg');
-  background-size: contain;
+  background-size: 100vw 100vh;
   background-repeat: no-repeat;
   background-position: center 0px;
 	margin: 0px;
