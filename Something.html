@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For my Lakshu &#10084;&#65039;&#128522;</title>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"><link rel="stylesheet" href="css/.-style.css">
+
+</head>
+<body>
+
+  <div id="popup1" class="popup">
+    <div class="popup-content">
+        <p>Hello My Love !! Today is Our First Valentines Day</p>
+        <p>Its unfortunate that we did not get to celebrate it in real life</p>
+    </div>
+</div>
+
+<!-- Popup 2 -->
+<div id="popup2" class="popup">
+    <div class="popup-content">
+        <p>But i have a small gift for you</p>
+        <p>It might not be much but i promise agli bar better hoga </p>
+    </div>
+</div>
+
+<!-- partial:index.partial.html -->
+<div id = "card" class="card">
+		<div class="imgBox">
+			<div class="bark"></div>
+			<img src="images/bg1.png">
+		</div>
+		<div class="details">
+			<h4 class="color1">HAPPY VALENTINES DAY
+			<h4 class="color2 margin">I LOVEEE YOU
+			</h4></h4><p>Dear Lakshu,</p>
+			<p>You are the best thing that has ever happened to me.</p>
+			<p>I know these 929 kms are tough, but your presence in</p>
+			<p>my life, makes my everyday special.</p>
+			<p>But your presence in my life</p>
+			<p>makes my everyday special.</p>
+			<p>I Love you very much &#128522;</p>
+			<p>I Love you very much &#128522;</p>
+			<p>I Love you very much &#128522;</p>
+      <p>I Love you very much &#128522;</p>
+      <p>I Love you very much &#128522;</p>
+      <p>I Love you very much &#128522;</p>
+      <p>I Love you very much &#128522;</p>
+      <p>Siri Play , Tera hone laga hoon <button class = "song"> Play </button></p>
+      <audio id="song" src="terahonelagahoon.wav"></audio>
+			<p class="text-right">Happy Valentines Day, Lakshita</p>
+			<p class="text-right">&hearts; Aaryan</p>
+		</div>
+	</div>
+<!-- partial -->
+  <script src="js/6585-.-script.js"></script>
+  <script> 
+  var brd = document.createElement("DIV");
+document.body.insertBefore(brd, document.getElementById("board"));
+
+const duration = 3000;
+const speed = 0.5;
+const cursorXOffset = 0;
+const cursorYOffset = -5;
+
+var hearts = [];
+var lastHeartTime = 0; // Tracks the last time a heart was created
+const heartInterval = 100; // Time interval (in ms) between heart generations
+
+function generateHeart(x, y, xBound, xStart, scale) {
+  var heart = document.createElement("DIV");
+  heart.setAttribute("class", "heart");
+  brd.appendChild(heart);
+  heart.time = duration;
+  heart.x = x;
+  heart.y = y;
+  heart.bound = xBound;
+  heart.direction = xStart;
+  heart.style.left = heart.x + "px";
+  heart.style.top = heart.y + "px";
+  heart.scale = scale;
+  heart.style.transform = "scale(" + scale + "," + scale + ")";
+  hearts.push(heart);
+  return heart;
+}
+
+document.onmousemove = function (e) {
+  var currentTime = Date.now();
+  if (currentTime - lastHeartTime >= heartInterval) {
+    lastHeartTime = currentTime; // Update the last heart creation time
+    var start = 1 - Math.round(Math.random()) * 2;
+    var scale = Math.random() * Math.random() * 0.8 + 0.2;
+    var bound = 30 + Math.random() * 20;
+    generateHeart(
+      e.pageX - brd.offsetLeft + cursorXOffset,
+      e.pageY - brd.offsetTop + cursorYOffset,
+      bound,
+      start,
+      scale
+    );
+  }
+};
+
+var before = Date.now();
+setInterval(frame, 5);
+
+function frame() {
+  var current = Date.now();
+  var deltaTime = current - before;
+  before = current;
+  for (var i = hearts.length - 1; i >= 0; i--) {
+    var heart = hearts[i];
+    heart.time -= deltaTime;
+    if (heart.time > 0) {
+      heart.y -= speed;
+      heart.style.top = heart.y + "px";
+      heart.style.left =
+        heart.x +
+        heart.direction *
+          heart.bound *
+          Math.sin((heart.y * heart.scale) / 30) /
+          heart.y *
+          100 +
+        "px";
+    } else {
+      heart.parentNode.removeChild(heart);
+      hearts.splice(i, 1);
+    }
+  }
+}
+
+
+
+// Function to show the popup
+function showPopup(popupId) {
+    document.getElementById(popupId).style.display = 'flex';
+    document.getElementById(popupId).querySelector('.popup-content').style.opacity = 1; // Make content visible
+}
+
+// Function to hide the popup
+function hidePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
+
+// Show the first popup when the page loads
+window.onload = function() {
+    showPopup('popup1');
+
+    // Hide the first popup after 10 seconds
+    setTimeout(function() {
+        hidePopup('popup1');
+        showPopup('popup2'); // Show the second popup
+    }, 4000); // 10 seconds
+
+    // Hide the second popup after 10 seconds
+    setTimeout(function() {
+        hidePopup('popup2');
+        // Show the card or letter after both popups are hidden
+        document.getElementById('card').style.display = 'block';
+    }, 8000); // 20 seconds (10 + 10 seconds)
+}
+
+const button = document.querySelector('.song');
+const audio = document.getElementById('song');
+
+// Toggle Play and Pause
+button.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    button.textContent = 'Pause'; // Change button text to Pause
+  } else {
+    audio.pause();
+    button.textContent = 'Play'; // Change button text back to Play
+  }
+});
+
+// Reset Button Text When Song Ends
+audio.addEventListener('ended', () => {
+  button.textContent = 'Play'; // Reset button text to Play
+});
+
+
+
+</script>
+
+</body>
+</html>

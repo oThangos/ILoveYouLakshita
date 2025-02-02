@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+	height: 100%; /* Ensures the background covers the full height */
+  margin: 0;    
+	font-family: 'Indie Flower', cursive !important;
+  background: #FDE3A7; /*CAPE HONEY*/
+  background-image: url('background1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+::selection {
+	background: transparent;
+}
+
+h4 {
+	font-size: 30px;
+	line-height: 1px;
+	padding-left: 48px;
+	font-family: 'Amatic SC', cursive !important;
+	position: relative;
+	top: -30px; /* Moves the text 10px upward */
+  }
+
+.color1{color:#1BBC9B}/*MOUNTAIN MEADOW*/
+.color2{color:#C0392B/*TALL POPPY*/}
+
+
+.card {
+	color: #013243; /*SHERPA BLUE*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 360px;
+	height: 480px;
+	background: #e0e1dc;
+	transform-style: preserve-3d;
+	transform: translate(-50%,-50%) perspective(2000px);
+	box-shadow: inset 300px 0 50px rgba(0,0,0,.5), 20px 0 60px rgba(0,0,0,.5);
+	transition: 1s;
+
+}
+
+
+.card:hover {
+	transform: translate(-50%,-50%) perspective(2000px) rotate(15deg) scale(1.2);
+	box-shadow: inset 20px 0 50px rgba(0,0,0,.5), 0 10px 100px rgba(0,0,0,.5);
+}
+
+.card:before {
+	content:'';
+	position: absolute;
+	top: -5px;
+	left: 0;
+	width: 100%;
+	height: 5px;
+	background: #BAC1BA;
+	transform-origin: bottom;
+	transform: skewX(-45deg);
+}
+
+.card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -5px;
+	width: 5px;
+	height: 100%;
+	background: #92A29C;
+	transform-origin: left;
+	transform: skewY(-45deg);
+}
+
+.card .imgBox {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transform-origin: left;
+	transition: .7s;
+}
+
+.card .bark {
+	position: absolute;
+	background: #e0e1dc;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: .7s;
+}
+
+.card .imgBox img {
+	min-width: 360px;
+	max-height: 480px;
+}
+
+.card:hover .imgBox {
+	transform: rotateY(-135deg);
+}
+
+.card:hover .bark {
+	opacity: 1;
+	transition: .6s;
+  box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 0 0 0 10px;
+	z-index: -1;
+	margin-top: 70px;
+}
+
+.card .details p {
+	font-size: 12px;
+	line-height: 5px;
+	padding: 0 0 0 20px;
+	position: relative;
+	top: -30px;
+}
+
+.card .details h4{
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+@keyframes heartfade {
+	0% {
+	  opacity : 1;
+	}
+	50% {
+	  opacity : 0;
+	}
+  }
+  .heart {
+	z-index : 999;
+	animation : heartfade 6s linear;
+	position : absolute; 
+  }
+  .heart:before,
+  .heart:after {
+	content : "";
+	background-color : #fc2a62;
+	position : absolute;
+	height : 30px;
+	width : 45px;
+	border-radius : 15px 0px 0px 15px;
+  }
+  
+  .heart:before {
+	transform : rotate(45deg);
+  }
+  
+  .heart:after {
+	left : 10.5px;
+	transform : rotate(135deg);
+  }
+
+  /* Popup styling */
+/* Popup styling */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  #FDE3A7; /* Transparent black background */
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* To ensure it is above other content */
+}
+
+/* Popup content with animation */
+.popup-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+    max-width: 800px;
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially hidden */
+    animation: slideIn 1s forwards; /* Animation for slide-in effect */
+}
+
+/* Animation for sliding in from below */
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%); /* Start below the screen */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* End at normal position */
+        opacity: 1;
+    }
+}
+
+.popup-content p {
+    font-size: 1.5em; /* Increased font size */
+    line-height: 1.5;
+}
+
+
+
+/* Letter page styling */
+.card{
+    display: none; /* Hidden until the final step */
+}
+
+.song {
+background-color:#013243; /* Light pink background */
+	color: white; /* White text */
+	font-size: 10px; /* Font size */
+	padding: 5px 5px; /* Padding for better button size */
+	border: none; /* Remove default border */
+	border-radius: 5px; /* Rounded corners */
+	cursor: pointer; /* Pointer cursor on hover */
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+	transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+  }
+  
+  .song:hover {
+	background-color: #00506a; /* Darker pink on hover */
+	transform: scale(1.05); /* Slightly larger on hover */
+  }
+  
+  .song:active {
+	background-color: #013243; /* Even darker pink when clicked */
+	transform: scale(0.95); /* Slightly smaller when clicked */
+  }
+ 
