@@ -22,10 +22,10 @@ body {
 h4 {
 	font-size: 30px;
 	line-height: 1px;
-	padding-left: 48px;
+	padding-left: 30px;
 	font-family: 'Amatic SC', cursive !important;
 	position: relative;
-	top: -70px; /* Moves the text 10px upward */
+	top: -80px; /* Moves the text 10px upward */
   }
 
 .color1{color:#1BBC9B}/*MOUNTAIN MEADOW*/
@@ -124,7 +124,7 @@ h4 {
 	line-height: 5px;
 	padding: 0 0 0 20px;
 	position: relative;
-	top: -70px;
+	top: -80px;
 }
 
 .card .details h4{
